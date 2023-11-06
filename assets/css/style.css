@@ -1,3 +1,7 @@
+* {
+    font-family: 'offside';
+}
+
 .backer {
     background-image: linear-gradient(to bottom, rgb(85, 146, 142), white);
     width: 100%;
@@ -21,6 +25,7 @@
     color: rgb(189, 213, 194);
     font-size: 30px;
     border-bottom: 2px double grey;
+    font-family: 'offside';
 }
 
 h1:hover {
@@ -156,7 +161,8 @@ ol:hover {
 
 .code {
     background-color: black;
-    font-family:monospace;
+    font-family:'pixelify sans';
+    font-size: large;
     color: rgb(2, 255, 2);
     text-align: center;
     width: 50%;
@@ -173,6 +179,7 @@ ol:hover {
     padding: 10px;
     margin-bottom: 20px;
     border: 1px dashed white;
+    
 }
 
     .circle {
@@ -189,7 +196,8 @@ ol:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    font-family: 'pixelify sans';
+    font-size: larger;
     background-color: orange;
     color: green;
     border-radius: 50%;
@@ -200,4 +208,5 @@ ol:hover {
 .link a {
     text-decoration: none;
     color: rgb(2, 255, 2);
+    font-family: 'monospace';
 }
