@@ -1,0 +1,123 @@
+.backer {
+    background-image: linear-gradient(to bottom, rgb(146, 85, 85), white);
+    width: 100%;
+    height: 100%;
+}
+
+
+.header {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    background-color: rgb(119, 6, 6);
+    width: 100%;
+    height: 100px;
+    display: flex;
+    margin: auto;
+    align-content: center;
+    align-items: center;
+    color: rgb(209, 170, 170);
+    font-size: 30px;
+    border-bottom: 2px double grey;
+}
+
+h1:hover {
+    color: white;
+    scale: 1.01;
+}
+
+main {
+    margin-top: 150px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: auto;
+    justify-content: center;
+}
+
+li {
+    list-style: none;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+ul {
+    font-size: large;
+    padding: 5px;
+}
+
+ol {
+    font-size: medium;
+    padding: 5px;
+    border-radius: 8px;
+
+
+}
+
+.instructions {
+    height: 100%;
+    width: fit-content;
+    background-color: rgba(255, 255, 255, 0.523);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 10px;
+    margin-top: 0;
+    margin-right: 50px;
+    color: maroon;
+}
+
+.instruct {
+    width: 80%;
+}
+
+.link {
+    width: 80%;
+    font-size: small;
+}
+
+
+
+.highlight {
+    filter: opacity(80%);
+    font-style: italic;
+    font-size: 30px;
+}
+
+.demo {
+    width: 48%;
+    margin: 0px;
+    border-radius: 15px;
+}
+
+.vid {
+    border-radius: 15px;
+}
+
+.screenshots {
+    display: flex;
+
+    width: 100%;
+    height: fit-content;
+    justify-content: center;
+    margin: 25px;
+}
+
+.screenshot {
+    margin: 15px;
+    border-radius: 8px;
+}
+
+li:hover, ol:hover {
+    background-color: rgb(77, 9, 9);
+    color: white;
+    scale: 1.05;
+}
+
+.screenshot:hover {
+    scale: 1.3;
+}
