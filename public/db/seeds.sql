@@ -1,29 +1,26 @@
-USE company;
-INSERT INTO departments (name)
+USE employees;
+INSERT INTO department (name)
 VALUES
  ("Sales"),
  ("Engineering"),
  ("Finance"),
  ("Legal");
 
-INSERT INTO roles (title, salary, department_id)
+INSERT INTO role (title, salary, department_id)
 VALUES 
-("Sales Lead", 100000, 1), 
-("Salesperson", 80000, 1), 
-("Lead Engineer", 150000, 2), 
-("Software Engineer", 120000, 2), 
-("Accountant", 125000, 3), 
-("Legal Team Lead", 250000, 4), 
-("Lawyer", 190000, 4);
+("Sales Lead", 100000, "Sales"), 
+("Salesperson", 80000, "Sales"), 
+("Lead Engineer", 150000, "Engineering"), 
+("Software Engineer", 120000, "Engineering"),
+("Account Manager", 160000, "Finance"),
+("Accountant", 125000, "Finance"), 
+("Legal Team Lead", 250000, "Legal"), 
+("Lawyer", 190000, "Legal");
 
-INSERT INTO employees (first_name, last_name, role_id)
+INSERT INTO employee (first_name, last_name, department_name, salary, manager_id)
 VALUES 
-("Oscar", "Wilde", 1), 
-("James", "Joyce", 2), 
-("Clarice", "Lispector", 3),
-("Jane", "Austen", 4), 
-("George", "Orwell", 5), 
-("Bell", "Hooks", 6), 
-("Charles", "Dickens", 7), 
-("Kurt", "Vonnegut", 5), 
-("Maya", "Angelou", 4);
+("Jim", "Halper", "Sales", 80000, "Micheal Scott"), 
+("Micheal", "Scott","Sales", 100000, "David Wallace"), 
+("Oscar", "Martinez", "Finance", 125000, "Micheal Scott"),
+("Ryan", "Howard", "Engineering", 120000, "Micheal Scott"),  
+("Holly", "Flax", "Legal", 190000, "Micheal Scott");
