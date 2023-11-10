@@ -45,6 +45,7 @@ N/A
 ## Screenshot
 ![screenshot](./assets/images/logo-screenshot.png)
 ![screenshot](./assets/images/db-screenshot.png)
+![screenshot](./assets/images/exit-screenshot.png)
 
 ---
 

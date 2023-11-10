@@ -24,11 +24,99 @@ const db = mysql.createConnection(
   console.log(`Connected to the company database.`)
 );
 
+async function deptChoices() {
+  const db = mysql.createConnection(
+    {
+      host: 'localhost',
+      // MySQL username,
+      user: 'root',
+      // MySQL password
+      password: 'dolphin',
+      database: 'employees'
+    },
+  ).promise();
 
+  const departmentQuery = `SELECT name FROM department;`;
+  const departments = await db.query(departmentQuery);
+  //console.log(departments[0]);
+
+  return departments[0];
+  
+};
+
+async function manageChoices() {
+    const db = mysql.createConnection(
+    {
+      host: 'localhost',
+      // MySQL username,
+      user: 'root',
+      // MySQL password
+      password: 'dolphin',
+      database: 'employees'
+    },
+  ).promise();
+  
+  const manageQuery = `SELECT first_name FROM employee;`;
+  const managers = await db.query(manageQuery);
+  //console.log(managers[0]);
+  return managers[0];
+};
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+const empQuestions = [
+  {
+    name: "new_first_name",
+    type: "input",
+    message: "What is the New employee's First Name?"
+  },
+
+  {
+    name: "new_last_name",
+    type: "input",
+    message: "What is the New employee's Last Name?"
+  },
+
+  {
+    name: "new_department_name",
+    type: "list",
+    message: "What is the Department for the New Employee?",
+    choices: [
+      // departments[0],
+      "Sales",
+      "Engineering",
+      "Finance",
+      "Legal",
+
+    ]},
+    {
+    name: "new_salary",
+    type: "input",
+    message: "What is the Salary for the New Employee?"
+
+    },
+    {
+      name: "new_manager",
+      type: "list",
+      message: "Who is the Manager over the New Employee?",
+      choices: [
+        // managers[0],
+        "Micheal Scott",
+        "David Wallace",
+
+      ]
+    },
+  ]
+
+  const deptQuestions = [
+    {
+      name: "new_dept",
+      message: "What is the name of the Department?",
+      type: "input"
+    },
+  ]
 
 
 function startUp() {
@@ -81,9 +169,9 @@ function startUp() {
                          ▐▌    ▀▀███▀▀    ▐▌
                         ████ ▄█████████▄ ████
                         
-                          ╔═.✵.══════════╗
-                         Program  Terminated
-                          ╚══════════.✵.═╝ 
+                          ╔═✵✵✵═══════════╗
+                          Terminate Program
+                          ╚══════════✵✵✵══╝ 
 
           `);
             process.exit();
@@ -116,7 +204,33 @@ function roleSearch() {
   });
 };
 
+function addEmp() {
+  deptChoices();
+   inquirer.prompt(empQuestions).then(answers => {
+    db.query(  "INSERT INTO employee (first_name, last_name, department_name, salary, manager_id) VALUES (`${new_first_name}`, `${new_last_name}`, `${new_dept_name}`, `${new_salary}`, `${new_manager}`)", function(err, res) {
+      if (err) throw err;
+      console.table(res);
+     
+           //"VALUES", (`${new_first_name}`, `${new_last_name}`, `${new_dept_name}`, `${new_salary}`, `${new_manager}`)"
+      startUp();
+    })
+  });
+};
 
+function addDept() {
+  manageChoices();
+  console.log()
+  inquirer.prompt(deptQuestions).then(answers => {
+    db.query(  "INSERT INTO department (name) VALUES (`${new_dept})", function(err, res) {
+      if (err) throw err;
+      console.table(res);
+     
+           //"VALUES", (`${new_first_name}`, `${new_last_name}`, `${new_dept_name}`, `${new_salary}`, `${new_manager}`)"
+      startUp();
+    })
+  });
+};
+  
 
 function firstStart() {
   console.log(`
@@ -146,5 +260,6 @@ ____________________________________________________________________________
   `);
   startUp();
 };
+
 
 firstStart();
