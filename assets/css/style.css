@@ -1,5 +1,5 @@
 * {
-    font-family: 'offside';
+    
 }
 
 .backer {
@@ -30,7 +30,11 @@ body {
     color: rgb(189, 213, 194);
     font-size: 30px;
     border-bottom: 2px double grey;
-    font-family: 'offside';
+}
+
+h1 {
+    font-family: 'pixelify sans';
+
 }
 
 h1:hover {
@@ -55,6 +59,7 @@ li {
     list-style: none;
     border-radius: 8px;
     padding: 5px;
+    font-size: larger;
 }
 
 ul {
@@ -93,10 +98,12 @@ section {
     font-family:monospace;
     color: rgb(2, 255, 2);
     text-align: center;
-    width: 50%;
+    width: fit-content;
     justify-content: center;
     margin: auto;
-    padding: 5px;
+    
+    margin-bottom: 15px;
+    padding: 15px;
 }
 
 .instruct {
@@ -106,13 +113,13 @@ section {
 .link {
     font-style: italic;
     background-color: black;
-    width: 80%;
+    width: fit-content;
     font-family:monospace;
     color: rgb(2, 255, 2);
     text-align: center;
-    padding: 5px;
+    padding: 10px;
     justify-content: center;
-    margin: auto;
+    margin: 15px auto;
 }
 
 
@@ -202,7 +209,7 @@ ol:hover {
 
 .screenshot:hover {
     scale: 1.8;
-    transition: ease-in-out 0.5s;
+    transition: ease-in-out 1s;
     z-index: 1;
     margin-right: 100px;
 }
@@ -213,10 +220,16 @@ ol:hover {
     font-size: large;
     color: rgb(2, 255, 2);
     text-align: center;
-    width: 50%;
+    width: fit-content;
     justify-content: center;
-    margin: auto;
-    padding: 5px;
+    
+    padding: 10px;
+    margin: 15px auto;
+}
+
+.repo:hover {
+    scale: 1.1;
+    transition: 0.3s;
 }
 
 .main {
