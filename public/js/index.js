@@ -214,7 +214,7 @@ function startUp() {
                         ████ ▄█████████▄ ████
                         
                           ╔═✵✵✵═══════════╗
-                          Terminate Program
+                          Program Terminated
                           ╚══════════✵✵✵══╝ 
 
           `);
@@ -225,6 +225,8 @@ function startUp() {
 };
 
 function empAllSearch() {
+  console.log("Displaying Employees:")
+
   db.query("SELECT * from employee", function(err, res) {
     if (err) throw err;
     console.table(res);
@@ -233,6 +235,8 @@ function empAllSearch() {
 };
 
 function deptSearch() {
+  console.log("Displaying Departments:")
+
   db.query("SELECT * from department", function(err, res) {
     if (err) throw err;
     console.table(res);
@@ -241,6 +245,8 @@ function deptSearch() {
 };
 
 function roleSearch() {
+  console.log("Displaying Roles:")
+
   db.query("SELECT * from role", function(err, res) {
     if (err) throw err;
     console.table(res);
@@ -262,7 +268,7 @@ function addEmp() {
       console.log("Employee Added!");
       empAllSearch();
 
-      startUp();
+    
      })})
   });
 };
@@ -299,7 +305,7 @@ function addRole() {
     db.query(  newQuery, newRole, function(err, res) {
       if (err) throw err;
      
-      console.log("Department Added!");
+      console.log("Role Added!");
       roleSearch();
   
     })})
@@ -367,9 +373,8 @@ function updateEmpRole() {
 
 function firstStart() {
   console.log(`
-  ___________________________________________________________________________
-  
-                                    
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+                                
                     ▐▓█▀▀▀▀▀▀▀▀▀█▓▌ █████
                     ▐▓█   ▀  ▀  █▓▌ █▄▄▄█
                     ▐▓█   *~~*  █▓▌ █▄▄▄█
@@ -377,21 +382,22 @@ function firstStart() {
                         ▄▄███▄▄     █████
 
 
-██    ██  █████  █████▄ ██  ██ ██████  █████  █████▄  ████  ██████
-██    ██ ██   ██ ██  ██ ██_██  ██     ██   ██ ██  ██ ██  ██ ██
+██    ██ ▄█████▄ █████▄ ██  ██ ██████  █████  █████▄ ▄████▄ ██████
+██    ██ ██   ██ ██  ██ ██_▄█  ██     ██   ██ ██  ██ ██  ██ ██
 ██_██_██ ██   ██ █████  ████   ████   ██   ██ █████  ██     ████
  ██  ██  ██   ██ ██ █▄  ██ ██  ██     ██   ██ ██ █▄  ██  ██ ██
   █  █    █████  ██  ██ ██  ██ ██      █████  ██  ██  ████  ██████
 
 
-███  ███   ████   ██  ██  ████   ████  █████ █████▄
- ██__██   ██  ██  ███_██ ██  ██ ██   █ ██    ██  ██
+ ██  ██   ▄████▄  ██  ██ ▄████▄ ▄████▄ █████ █████▄
+▄██▄▄██▄  ██  ██  ███_██ ██  ██ ██   █ ██    ██  ██
 ██ ██ ██  ██████  ██ ███ ██████ ██  ▄▄ ████  █████  
 ██    ██  ██  ██  ██  ██ ██  ██ ██   █ ██    ██ █▄
 ██    ██  ██  ██  ██  ██ ██  ██  ████  █████ ██  ██ CRM
 
                                               -Workforce not inluded!
-____________________________________________________________________________
+
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
   `);
   startUp();
 };
