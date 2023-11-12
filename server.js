@@ -19,7 +19,6 @@ const db = mysql.createConnection(
     password: 'dolphin',
     database: 'employee'
   },
-  console.log(`Connected to the employee database.`)
 );
 
 
