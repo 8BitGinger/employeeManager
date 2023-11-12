@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
-# **Employee Manager** 💻  ***CRM***
+# **Employee Manager** 🖥 ***CRM***
 
 ## Description
 A Customer Relationship Management Tool designed to to create, view, and manage an employee database.

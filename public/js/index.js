@@ -24,43 +24,66 @@ const db = mysql.createConnection(
   console.log(`Connected to the company database.`)
 );
 
-async function deptChoices() {
-  const db = mysql.createConnection(
-    {
-      host: 'localhost',
-      // MySQL username,
-      user: 'root',
-      // MySQL password
-      password: 'dolphin',
-      database: 'employees'
-    },
-  ).promise();
 
-  const departmentQuery = `SELECT name FROM department;`;
-  const departments = await db.query(departmentQuery);
-  //console.log(departments[0]);
+//this section is a WIP to get the table to appear as the list of choices through inquirer prompt. 
 
-  return departments[0];
+// async function deptChoices() {
+//   const db = mysql.createConnection(
+//     {
+//       host: 'localhost',
+//       // MySQL username,
+//       user: 'root',
+//       // MySQL password
+//       password: 'dolphin',
+//       database: 'employees'
+//     },
+//   ).promise();
+
+//   const departmentQuery = `SELECT name FROM department;`;
+//   const departments = await db.query(departmentQuery);
+//   //console.log(departments[0]);
+
+//   return departments[0];
   
-};
+// };
 
-async function manageChoices() {
-    const db = mysql.createConnection(
-    {
-      host: 'localhost',
-      // MySQL username,
-      user: 'root',
-      // MySQL password
-      password: 'dolphin',
-      database: 'employees'
-    },
-  ).promise();
+// async function roleChoices() {
+//   const db = mysql.createConnection(
+//     {
+//       host: 'localhost',
+//       // MySQL username,
+//       user: 'root',
+//       // MySQL password
+//       password: 'dolphin',
+//       database: 'employees'
+//     },
+//   ).promise();
+
+//   const roleQuery = `SELECT name FROM department;`;
+//   const roles = await db.query(roleQuery);
+//   //console.log(departments[0]);
+
+//   return roles[0];
   
-  const manageQuery = `SELECT first_name FROM employee;`;
-  const managers = await db.query(manageQuery);
-  //console.log(managers[0]);
-  return managers[0];
-};
+// };
+
+// async function manageChoices() {
+//     const db = mysql.createConnection(
+//     {
+//       host: 'localhost',
+//       // MySQL username,
+//       user: 'root',
+//       // MySQL password
+//       password: 'dolphin',
+//       database: 'employees'
+//     },
+//   ).promise();
+  
+//   const manageQuery = `SELECT first_name FROM employee;`;
+//   const managers = await db.query(manageQuery);
+//   //console.log(managers[0]);
+//   return managers[0];
+// };
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
@@ -92,9 +115,9 @@ const empQuestions = [
 
     ]},
     {
-    name: "new_salary",
+    name: "new_role",
     type: "input",
-    message: "What is the Salary for the New Employee?"
+    message: "What is Role for the New Employee?"
 
     },
     {
@@ -118,6 +141,23 @@ const empQuestions = [
     },
   ]
 
+const roleQuestions = [
+  {
+    name: "new_title",
+    message: "What is the Name of the New Role?",
+    type: "input"
+  },
+  {
+    name: "new_salary",
+    message: "What is the Salary for this Role?",
+    type: "input"
+  },
+  {
+    name:"new_department_id",
+    message: "What Department is the Role under?",
+    type: "input"
+  },
+]
 
 function startUp() {
   
@@ -157,13 +197,17 @@ function startUp() {
         case "Add Roles":
           addRole();
           break;
-        case "Update Employee Roles":
+        case "Update Employee Role":
           updateEmpRole();
           break;
         case "exit":
           console.log(`
 
-                               ▄█▄▄▄█▄
+                                            ╔═════════════════════════════════════╗ 
+                                          * █ Terminate,I mean Manage, all Humans █
+                                        *   ╚═════════════════════════════════════╝
+                                      *
+                               ▄█▄▄▄█▄      
                         ▄▀    ▄▌─▄─▄─▐▄    ▀▄
                         █▄▄█  ▀▌─▀─▀─▐▀  █▄▄█
                          ▐▌    ▀▀███▀▀    ▐▌
@@ -205,30 +249,119 @@ function roleSearch() {
 };
 
 function addEmp() {
-  deptChoices();
-   inquirer.prompt(empQuestions).then(answers => {
-    db.query(  "INSERT INTO employee (first_name, last_name, department_name, salary, manager_id) VALUES (`${new_first_name}`, `${new_last_name}`, `${new_dept_name}`, `${new_salary}`, `${new_manager}`)", function(err, res) {
+  console.log("Displaying Employees:")
+      db.query("SELECT * from role", function(err, res) {
       if (err) throw err;
       console.table(res);
-     
-           //"VALUES", (`${new_first_name}`, `${new_last_name}`, `${new_dept_name}`, `${new_salary}`, `${new_manager}`)"
+   inquirer.prompt(empQuestions).then(answers => {
+    const answerArry = [answers.new_first_name, answers.new_last_name, answers.new_department_name, answers.new_role, answers.new_manager];
+    const newQuery = "INSERT INTO employee (first_name, last_name, department_name, role_id, manager_id) VALUES (?, ?, ?, ?, ?)";
+    db.query(newQuery,  answerArry, function(err, res) {
+      if (err) throw err;
+      
+      console.log("Employee Added!");
+      empAllSearch();
+
       startUp();
-    })
+     })})
   });
 };
 
 function addDept() {
-  manageChoices();
-  console.log()
+  console.log("Displaying Departments:")
+
+  db.query("SELECT * from department", function(err, res) {
+    if (err) throw err;
+    console.table(res);
   inquirer.prompt(deptQuestions).then(answers => {
-    db.query(  "INSERT INTO department (name) VALUES (`${new_dept})", function(err, res) {
+    let newDept = answers.new_dept;
+    let newQuery = "INSERT INTO department (name) VALUES (?)"
+    db.query(  newQuery, newDept, function(err, res) {
+      if (err) throw err;
+     
+      console.log("Department Added!");
+      deptSearch();
+
+    })})
+  });
+};
+
+
+function addRole() {
+  console.log("Displaying Roles:")
+
+  db.query("SELECT * from role", function(err, res) {
+    if (err) throw err;
+    console.table(res);
+  inquirer.prompt(roleQuestions).then(answers => {
+    let newRole = [answers.new_title, answers.new_salary, answers.new_department_id];
+    let newQuery = "INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?)"
+    db.query(  newQuery, newRole, function(err, res) {
+      if (err) throw err;
+     
+      console.log("Department Added!");
+      roleSearch();
+  
+    })})
+  });
+};
+
+
+function updateEmpRole() {
+  console.log("Displaying Tables:");
+
+  db.query("SELECT * from employee", function(err, res) {
+    if (err) throw err;
+    console.table(res);
+
+    db.query("SELECT * from role", function(err, res) {
       if (err) throw err;
       console.table(res);
-     
-           //"VALUES", (`${new_first_name}`, `${new_last_name}`, `${new_dept_name}`, `${new_salary}`, `${new_manager}`)"
-      startUp();
-    })
-  });
+
+    inquirer
+        .prompt([
+            {
+                name: "firstName",
+                type: "input",
+                message: "What is the first name of the employee?"
+            },
+            {
+                name: "lastName",
+                type: "input",
+                message: "What is the last name of the employee?"
+            },
+            {
+                name: "updatedRole",
+                type: "input",
+                message: "What is the New Role of the employee?"
+            },
+
+            {
+              name: "updatedDept",
+              type: "input",
+              message: "What is the New Department of the employee?"
+          },
+            
+        ])
+        .then(function (answers) {
+            var query = "UPDATE employee SET role_id=?, department_name=? WHERE first_name=? AND last_name=?";
+            db.query(query,
+                [answers.updatedRole, answers.updatedDept, answers.firstName, answers.lastName], function (err, data) {
+                    if (err) throw err;
+                    console.log("Employee has been updated");
+
+                    var query = "SELECT * FROM employee;";
+                    db.query(query, function (err, data) {
+                        if (err) throw err;
+                        console.table(data)
+                        startUp();
+                    });
+                })
+
+            })})
+
+        })
+  
 };
   
 
@@ -244,17 +377,20 @@ function firstStart() {
                         ▄▄███▄▄     █████
 
 
-██████  ███  ███  ██████  ██       █████   ██   ██  ██████  ██████
-██       ██__██   ██  ██  ██      ██   ██  ██   ██  ██      ██   
-████    ██ ██ ██  █████   ██      ██   ██  ███████  ████    ████
-██      ██    ██  ██      ██   █  ██   ██       ██  ██      ██
-██████  ██    ██  ██      ██████   █████    ██████  ██████  ██████ 
+██    ██  █████  █████▄ ██  ██ ██████  █████  █████▄  ████  ██████
+██    ██ ██   ██ ██  ██ ██_██  ██     ██   ██ ██  ██ ██  ██ ██
+██_██_██ ██   ██ █████  ████   ████   ██   ██ █████  ██     ████
+ ██  ██  ██   ██ ██ █▄  ██ ██  ██     ██   ██ ██ █▄  ██  ██ ██
+  █  █    █████  ██  ██ ██  ██ ██      █████  ██  ██  ████  ██████
+
 
 ███  ███   ████   ██  ██  ████   ████  █████ █████▄
  ██__██   ██  ██  ███_██ ██  ██ ██   █ ██    ██  ██
-██ ██ ██  ██████  ██ ███ ██████ ██  ▄▄ ████  █████
+██ ██ ██  ██████  ██ ███ ██████ ██  ▄▄ ████  █████  
 ██    ██  ██  ██  ██  ██ ██  ██ ██   █ ██    ██ █▄
-██    ██  ██  ██  ██  ██ ██  ██  ████  █████ ██  ██  CRM
+██    ██  ██  ██  ██  ██ ██  ██  ████  █████ ██  ██ CRM
+
+                                              -Workforce not inluded!
 ____________________________________________________________________________
   `);
   startUp();

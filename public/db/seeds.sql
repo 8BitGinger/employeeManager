@@ -17,10 +17,10 @@ VALUES
 ("Legal Team Lead", 250000, "Legal"), 
 ("Lawyer", 190000, "Legal");
 
-INSERT INTO employee (first_name, last_name, department_name, salary, manager_id)
+INSERT INTO employee (first_name, last_name, department_name, role_id, manager_id)
 VALUES 
-("Jim", "Halper", "Sales", 80000, "Micheal Scott"), 
-("Micheal", "Scott","Sales", 100000, "David Wallace"), 
-("Oscar", "Martinez", "Finance", 125000, "Micheal Scott"),
-("Ryan", "Howard", "Engineering", 120000, "Micheal Scott"),  
-("Holly", "Flax", "Legal", 190000, "Micheal Scott");
+("Jim", "Halper", "Sales", "Salesperson", "Micheal Scott"), 
+("Micheal", "Scott","Sales", "Sales Lead", "David Wallace"), 
+("Oscar", "Martinez", "Finance", "Accountant", "Micheal Scott"),
+("Ryan", "Howard", "Engineering", "Software Engineer", "Micheal Scott"),  
+("Holly", "Flax", "Legal", "Legal Team Lead", "Micheal Scott");
