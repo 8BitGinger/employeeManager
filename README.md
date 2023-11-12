@@ -6,8 +6,7 @@
 # **Employee Manager** 🖥 ***CRM***
 
 ## Description
-A Customer Relationship Management Tool designed to to create, view, and manage an employee database.
-
+A back-end CRM for managing your Workforce.  It allows you to keep track of things like your departments, the employees, and their managers, with additional functionality coming soon.  It takes advantage of inquirer npm to take your company to the next level!
 
 
 ## Table of Contents
@@ -63,11 +62,16 @@ Would like to add functionality to view budget department, update managers, view
 <a id="links"></a>
 ## Links
 ### Repo Link:
- https://github.com/8BitGinger/employeeManager
+ https://github.com/8BitGinger/workforceManager
 ### Deployed Link:
-https://8bitginger.github.io/employeeManager/
+https://8bitginger.github.io/workforceManager/
 ### Clone Link:
-git@github.com:8BitGinger/employeeManager.git
+```
+git@github.com:8BitGinger/workforceManager.git
+```
+### Walk-Through Demo Link:
+> https://drive.google.com/file/d/188Xc83FBA7KpS7-LkOkccNhQmUYuYQt-/view
+ ***recorded with ScreenCastify***
 
 
 <a id="support"></a>
