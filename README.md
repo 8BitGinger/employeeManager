@@ -16,7 +16,7 @@ A Customer Relationship Management Tool designed to to create, view, and manage 
 3. [Contributing](#contributing)
 4. [Screenshot](#screenshot)
 5. [License](#license)
-6. [Tests](#tests)
+6. [Roadmap](#roadmap)
 7. [Links](#links)
 8. [Questions](#support)
 9. [Dependencies](#depend)
@@ -55,9 +55,9 @@ N/A
 [MIT](https://opensource.org/licenses/MIT)
 
 
-<a id="tests"></a>
-## Tests
-N/A
+<a id="roadmap"></a>
+## Roadmap
+Would like to add functionality to view budget department, update managers, view manager by employee, view employees by department, and delete departments, roles, and employees.
 
 
 <a id="links"></a>

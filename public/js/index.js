@@ -200,6 +200,9 @@ function startUp() {
         case "Update Employee Role":
           updateEmpRole();
           break;
+        case "Delete Records":
+          deleteRecords();
+          break;
         case "exit":
           console.log(`
 
@@ -369,6 +372,49 @@ function updateEmpRole() {
         })
   
 };
+//This is the function that will allow deleting of the records.  
+
+// function deleteRecords() {
+//   console.log("Delete Screen")
+//   inquirer
+//   .prompt({
+//     name: "delete",
+//     type: "list",
+//     message: "What would you like to delete?",
+//     choices: [
+//       "Departments",
+//       "Roles",
+//       "Employees",
+//       "Go Home",
+//     ]
+//   }).then(function (answer) {
+//     switch (answer.action) {
+
+//       case "Departments":
+//         // delDept();
+//         console.log("delete functional");
+//         break;
+
+//       case "Roles":
+//         //delRoles();
+//         console.log("delete functional");
+//         break;
+
+//       case "Employees":
+//         //delEmp();
+//         console.log("delete functional");
+//         break;
+
+//       case "Go Home":
+//         //startUp();
+//         console.log("home functional");
+//         break;
+//     }    
+//     })
+    
+// }
+
+
   
 
 function firstStart() {
