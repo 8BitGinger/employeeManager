@@ -232,7 +232,7 @@ function startUp() {
 };
 
 function empAllSearch() {
-  console.log("Displaying Employees:")
+  console.log("Displaying Employees:");
 
   db.query("SELECT * from employee", function(err, res) {
     if (err) throw err;
@@ -242,7 +242,7 @@ function empAllSearch() {
 };
 
 function deptSearch() {
-  console.log("Displaying Departments:")
+  console.log("Displaying Departments:");
 
   db.query("SELECT * from department", function(err, res) {
     if (err) throw err;
@@ -252,7 +252,7 @@ function deptSearch() {
 };
 
 function roleSearch() {
-  console.log("Displaying Roles:")
+  console.log("Displaying Roles:");
 
   db.query("SELECT * from role", function(err, res) {
     if (err) throw err;
@@ -262,7 +262,7 @@ function roleSearch() {
 };
 
 function addEmp() {
-  console.log("Displaying Employees:")
+  console.log("Displaying Roles for Reference:");
       db.query("SELECT * from role", function(err, res) {
       if (err) throw err;
       console.table(res);
@@ -440,8 +440,7 @@ function delDept() {
     let newQuery = "DELETE FROM department WHERE NAME=?"
     db.query(  newQuery, delDept, function(err, res) {
       if (err) throw err;
-      console.log(`
-▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓`);
+      
       startUp();
       console.log("Successfuly Deleted");
       deptSearch();
@@ -469,10 +468,9 @@ function delRole() {
     let newQuery = "DELETE FROM role WHERE title=?"
     db.query(  newQuery, delRole, function(err, res) {
       if (err) throw err;
-      console.log(`
-▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓`);
-      startUp();
       console.log("Successfuly Deleted");
+      startUp();
+      
       roleSearch();
 
     })})
@@ -504,12 +502,11 @@ function delEmp() {
     let newQuery = "DELETE FROM employee WHERE id=?"
     db.query(  newQuery, delEmp, function(err, res) {
       if (err) throw err;
-      console.log(`
-▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓`);
               
               console.log("Successfuly Deleted");
-              empAllSearch();
+          
               startUp();
+              empAllSearch();
     })})
 
   });
