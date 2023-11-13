@@ -1,3 +1,6 @@
+const EventEmitter = require('eventemitter3')
+const emitter = new EventEmitter()
+
 var inquirer = require("inquirer");
 
 const express = require('express');
@@ -43,7 +46,7 @@ const db = mysql.createConnection(
 //   const departments = await db.query(departmentQuery);
 //   //console.log(departments[0]);
 
-//   return departments[0];
+
   
 // };
 
@@ -106,14 +109,16 @@ const empQuestions = [
     name: "new_department_name",
     type: "list",
     message: "What is the Department for the New Employee?",
-    choices: [
+    choices: 
+    [
       // departments[0],
       "Sales",
       "Engineering",
       "Finance",
       "Legal",
 
-    ]},
+    ]
+    },
     {
     name: "new_role",
     type: "input",
@@ -166,14 +171,16 @@ function startUp() {
       name: "action",
       type: "list",
       message: "What would you like to do?",
-      choices: [
-        "View All Employees",
+      choices: 
+      [
+        'View All Employees',
         "View All Departments",
         "View All Roles",
         "Add Employees",
         "Add Departments",
         "Add Roles",
         "Update Employee Role",
+        "Delete Records",
         "exit"
       ]
     })
@@ -228,7 +235,9 @@ function startUp() {
 };
 
 function empAllSearch() {
-  console.log("Displaying Employees:")
+  console.log(`
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓`);
+  console.log("Displaying Employees:");
 
   db.query("SELECT * from employee", function(err, res) {
     if (err) throw err;
@@ -238,7 +247,9 @@ function empAllSearch() {
 };
 
 function deptSearch() {
-  console.log("Displaying Departments:")
+  console.log(`
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓`);
+  console.log("Displaying Departments:");
 
   db.query("SELECT * from department", function(err, res) {
     if (err) throw err;
@@ -248,7 +259,9 @@ function deptSearch() {
 };
 
 function roleSearch() {
-  console.log("Displaying Roles:")
+  console.log(`
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓`);
+  console.log("Displaying Roles:");
 
   db.query("SELECT * from role", function(err, res) {
     if (err) throw err;
@@ -258,7 +271,7 @@ function roleSearch() {
 };
 
 function addEmp() {
-  console.log("Displaying Employees:")
+  console.log("Displaying Roles for Reference:");
       db.query("SELECT * from role", function(err, res) {
       if (err) throw err;
       console.table(res);
@@ -373,49 +386,146 @@ function updateEmpRole() {
   
 };
 //This is the function that will allow deleting of the records.  
+//We will want to delete Depts, Roles, and Employees
+function deleteRecords() {
 
-// function deleteRecords() {
-//   console.log("Delete Screen")
-//   inquirer
-//   .prompt({
-//     name: "delete",
-//     type: "list",
-//     message: "What would you like to delete?",
-//     choices: [
-//       "Departments",
-//       "Roles",
-//       "Employees",
-//       "Go Home",
-//     ]
-//   }).then(function (answer) {
-//     switch (answer.action) {
+  console.log("Delete Screen")
+  inquirer
+  .prompt({
+    name: "delete",
+    type: "list",
+    message: "What would you like to delete?",
+    choices: [
+      "Departments",
+      "Roles",
+      "Employees",
+      "Back"
+    ]}).then(function(answers) {
+  
+      switch (answers.delete) {
+        case "Departments":
+          delDept();
+          break;
+        case "Roles":
+          delRole();
+          break;
+        case "Employees":
+          delEmp(); 
+          break;
+        case "Back":
+          console.log(`
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓`);
+          startUp();
+          console.log("Back to Main");
+          break;
+        
+      }
+    });
+}
 
-//       case "Departments":
-//         // delDept();
-//         console.log("delete functional");
-//         break;
-
-//       case "Roles":
-//         //delRoles();
-//         console.log("delete functional");
-//         break;
-
-//       case "Employees":
-//         //delEmp();
-//         console.log("delete functional");
-//         break;
-
-//       case "Go Home":
-//         //startUp();
-//         console.log("home functional");
-//         break;
-//     }    
-//     })
-    
-// }
 
 
   
+
+
+
+function delDept() {
+  console.log("Displaying Departments:")
+
+  db.query("SELECT * from department", function(err, res) {
+    if (err) throw err;
+    console.table(res);
+  inquirer.prompt(
+    {
+      name: "deleteDeptSel",
+      type:"input",
+      message: "Which Department would you like to delete?"
+      
+    },
+  ).then(answer => {
+    let delDept = answer.deleteDeptSel;
+
+    let newQuery = "DELETE FROM department WHERE NAME=?"
+    db.query(  newQuery, delDept, function(err, res) {
+      if (err) throw err;
+      
+      console.log("Successfuly Deleted");
+      deptSearch();
+      startUp();
+      
+    })})
+  });
+};
+
+function delRole() {
+  console.log("Displaying Roles:")
+
+  db.query("SELECT * from role", function(err, res) {
+    if (err) throw err;
+    console.table(res);
+  inquirer.prompt(
+    {
+      name: "deleteRoleSel",
+      type:"input",
+      message: "Which Role would you like to delete?"
+      
+    },
+  ).then(answer => {
+    let delRole = answer.deleteRoleSel;
+
+    let newQuery = "DELETE FROM role WHERE title=?"
+    db.query(  newQuery, delRole, function(err, res) {
+      if (err) throw err;
+
+     
+      console.log("Successfuly Deleted");
+      roleSearch();
+      startUp();
+
+    })})
+  });
+};
+
+
+
+
+function delEmp() {
+  console.log("Displaying Employees:")
+
+  db.query("SELECT * from employee", function(err, res) {
+    if (err) throw err;
+    console.table(res);
+  inquirer.prompt(
+    {
+      name: "deleteEmpSel",
+      type:"input",
+      message: "What is the ID of the Employee you wish to Delete?"
+      
+    },
+
+  ).then(answers => {
+    let delEmp = answers.deleteEmpSel;
+   
+
+
+    let newQuery = "DELETE FROM employee WHERE id=?"
+    db.query(  newQuery, delEmp, function(err, res) {
+      if (err) throw err;
+
+      startUp();
+              console.log("Successfuly Deleted");
+              empAllSearch();
+              
+    })})
+
+  });
+
+};
+
+
+
+
+
 
 function firstStart() {
   console.log(`
@@ -447,6 +557,8 @@ function firstStart() {
   `);
   startUp();
 };
+
+// deptChoices();
 
 
 firstStart();
