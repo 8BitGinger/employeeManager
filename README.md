@@ -19,6 +19,7 @@ A back-end CRM for managing your Workforce.  It allows you to keep track of thin
 7. [Links](#links)
 8. [Questions](#support)
 9. [Dependencies](#depend)
+10. [Credits](#credits)
 
 ---
 
@@ -69,9 +70,10 @@ https://8bitginger.github.io/workforceManager/
 ```
 git@github.com:8BitGinger/workforceManager.git
 ```
-### Walk-Through Demo Link:
-> https://drive.google.com/file/d/188Xc83FBA7KpS7-LkOkccNhQmUYuYQt-/view
- ***recorded with ScreenCastify***
+### Demo Video Link:
+> https://www.veed.io/view/deda9468-f105-42e7-8f19-190046f40223?panel=share
+ 
+ ***recorded with ScreenCastify and edited with Veed.IO***
 
 
 <a id="support"></a>
@@ -85,8 +87,17 @@ ryan.fann@gmail.com
 <a id="depend"></a>
 ## Dependencies
 ```
-"express": "^4.18.2"<br>
-"inquirer": "^8.2.4"<br>
-"mysql": "^2.18.1"<br>
-"node": "^21.1.0"<br>
+"dependencies": {
+    "eventemitter3": "^5.0.1",
+    "express": "^4.18.2",
+    "inquirer": "^8.2.4",
+    "mysql2": "^3.6.3",
+    "node": "^21.1.0"
+  }
 ```
+
+<a id="credits"></a>
+## Credits
+[Screencastify for Video Recording](https://screencastify.com)
+Veed.IO for Video Editing
+Google Fonts for HTML
