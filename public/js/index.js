@@ -1,3 +1,6 @@
+const EventEmitter = require('eventemitter3')
+const emitter = new EventEmitter()
+
 var inquirer = require("inquirer");
 
 const express = require('express');
@@ -262,7 +265,7 @@ function roleSearch() {
 };
 
 function addEmp() {
-  console.log("Displaying Roles for Reference:");
+  console.log("Displaying Employees:");
       db.query("SELECT * from role", function(err, res) {
       if (err) throw err;
       console.table(res);
@@ -379,8 +382,7 @@ function updateEmpRole() {
 //This is the function that will allow deleting of the records.  
 //We will want to delete Depts, Roles, and Employees
 function deleteRecords() {
-  console.log(`
-▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓`);
+
   console.log("Delete Screen")
   inquirer
   .prompt({
@@ -393,7 +395,7 @@ function deleteRecords() {
       "Employees",
       "Back"
     ]}).then(function(answers) {
-      console.log(answers)
+  
       switch (answers.delete) {
         case "Departments":
           delDept();
@@ -440,7 +442,8 @@ function delDept() {
     let newQuery = "DELETE FROM department WHERE NAME=?"
     db.query(  newQuery, delDept, function(err, res) {
       if (err) throw err;
-      
+      console.log(`
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓`);
       startUp();
       console.log("Successfuly Deleted");
       deptSearch();
@@ -468,9 +471,9 @@ function delRole() {
     let newQuery = "DELETE FROM role WHERE title=?"
     db.query(  newQuery, delRole, function(err, res) {
       if (err) throw err;
-      console.log("Successfuly Deleted");
+
       startUp();
-      
+      console.log("Successfuly Deleted");
       roleSearch();
 
     })})
@@ -502,11 +505,11 @@ function delEmp() {
     let newQuery = "DELETE FROM employee WHERE id=?"
     db.query(  newQuery, delEmp, function(err, res) {
       if (err) throw err;
+
               
               console.log("Successfuly Deleted");
-          
-              startUp();
               empAllSearch();
+              startUp();
     })})
 
   });

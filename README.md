@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
-# **Employee Manager** 🖥 ***CRM***
+# **Workforce Manager** 🖥 ***CRM***
 
 ## Description
 A back-end CRM for managing your Workforce.  It allows you to keep track of things like your departments, the employees, and their managers, with additional functionality coming soon.  It takes advantage of inquirer npm to take your company to the next level!
