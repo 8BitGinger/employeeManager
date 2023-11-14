@@ -253,6 +253,7 @@ function deptSearch() {
 
   db.query("SELECT * from department", function(err, res) {
     if (err) throw err;
+    
     console.table(res);
     startUp();
   });
@@ -451,7 +452,7 @@ function delDept() {
       
       console.log("Successfuly Deleted");
       deptSearch();
-      startUp();
+      
       
     })})
   });
@@ -480,7 +481,7 @@ function delRole() {
      
       console.log("Successfuly Deleted");
       roleSearch();
-      startUp();
+      
 
     })})
   });
@@ -512,7 +513,7 @@ function delEmp() {
     db.query(  newQuery, delEmp, function(err, res) {
       if (err) throw err;
 
-      startUp();
+      
               console.log("Successfuly Deleted");
               empAllSearch();
               

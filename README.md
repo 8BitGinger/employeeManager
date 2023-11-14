@@ -98,6 +98,9 @@ ryan.fann@gmail.com
 
 <a id="credits"></a>
 ## Credits
+
 [Screencastify for Video Recording](https://screencastify.com)
-Veed.IO for Video Editing
-Google Fonts for HTML
+
+[Veed.IO for Video Editing](https://veed.io)
+
+[Google Fonts for HTML](https://fonts.google.com)
