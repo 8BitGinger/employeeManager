@@ -10,20 +10,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // Connect to database
-const db = mysql.createConnection(
-  {
-    host: 'localhost',
-    // MySQL username,
-    user: 'root',
-    // MySQL password
-    password: 'dolphin',
-    database: 'employee'
-  },
-);
-
-
+const db = mysql.createConnection({
+  host: 'localhost',
+  // MySQL username,
+  user: 'root',
+  // MySQL password
+  password: 'dolphin',
+  database: 'employees',
+});
 
 app.listen(PORT, () => {
-  console.log("connected to Database");
+  console.log('connected to Database');
   console.log(`Server running on port ${PORT}`);
 });
