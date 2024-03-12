@@ -1,11 +1,15 @@
 <a id="badges"></a>
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-# **Workforce Manager** 🖥 **_CRM_**
+# **Workforce Manager** 🖥 _CRM_
 
 ## Description
 
-A back-end CRM for managing your Workforce. It allows you to keep track of things like your departments, the employees, and their managers, with additional functionality coming soon. It takes advantage of inquirer npm to take your company to the next level!
+Imagine a world where managing your employees is a breeze. Forget clunky spreadsheets and endless paperwork. This node.js back-end CRM is your secret weapon to streamlining your company's structure.
+
+Effortlessly organize your departments, keep track of your employees, and ensure seamless communication between managers and their teams. This powerful tool, fueled by the innovative Inquirer.js library, is designed to empower your organization and propel it to new heights of productivity.
+
+But that's not all! This CRM is brimming with potential, and exciting new features are on the horizon. Stay tuned as we unleash the full arsenal of functionalities to take your workforce management to the next level!
 
 ## Table of Contents
 
@@ -25,13 +29,13 @@ A back-end CRM for managing your Workforce. It allows you to keep track of thing
 
 ## Usage
 
-- Download the Clone Repo from the links section below.
-  <br>
-- Open Terminal and Navigate to Folder
-  <br>
-- Install necessary dependencies <em>(view Dependencies section below)</em>
-  <br>
-- then run the following code in the terminal:
+Download the Clone Repo from the links section below.
+<br>
+Open Terminal and Navigate to Folder
+<br>
+Install necessary dependencies <em>(view Dependencies section below)</em>
+<br>
+Run the following code in the terminal:
 
 <a id="installation"></a>
 
@@ -45,7 +49,7 @@ _then_
 npm run start
 ```
 
-Follow the prompts to navigate the CRM!
+This tool will guide you through a series of prompts to to navigate the CRM and manage your employees successfully!
 
 ---
 
@@ -87,7 +91,22 @@ Follow the prompts to navigate the CRM!
 
 ## Roadmap
 
-Would like to add functionality to view budget department, update managers, view manager by employee, view employees by department, and delete departments, roles, and employees.
+<ins> I would like to add functionality to: <ins>
+
+- view budget department
+- update managers
+- view manager by employee
+- view employees by department
+  _and_
+- delete departments, roles, and employees
+
+<ins> I would also like the Prompt Lists: <ins>
+
+- Managers
+- Departments
+- Salaries, etc
+
+to be pulling from Database rather than static options. This will be rolled out in later development!
 
 ---
 
@@ -103,13 +122,15 @@ Would like to add functionality to view budget department, update managers, view
 
 #### Clone Link:
 
+_(copy this and paste into terminal at Folder location of your choice)_
+
 ```
-git@github.com:8BitGinger/workforceManager.git
+git clone git@github.com:8BitGinger/workforceManager.git
 ```
 
 #### [Demo Video Link](https://www.veed.io/view/deda9468-f105-42e7-8f19-190046f40223?panel=share)
 
-**_recorded with ScreenCastify and edited with Veed.IO_**
+**_recorded with [ScreenCastify](https://screencastify.com) and edited with Veed.IO_**
 
 </div>
 
@@ -121,9 +142,9 @@ git@github.com:8BitGinger/workforceManager.git
 
 Reach out with Questions or for Support here:
 
-### [Email](mailto:ryan.fann@gmail.com)
+[Email](mailto:ryan.fann@gmail.com)
 
-#### GitHub:
+_GitHub_
 
 [8BitGinger](https://github.com/8BitGinger)
 

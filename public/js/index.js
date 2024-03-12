@@ -122,7 +122,7 @@ const empQuestions = [
   {
     name: 'new_manager',
     type: 'list',
-    message: 'Who is the Manager over the New Employee?',
+    message: 'Who is the Manager for the New Employee?',
     choices: [
       // managers[0],
       'Micheal Scott',
@@ -134,7 +134,7 @@ const empQuestions = [
 const deptQuestions = [
   {
     name: 'new_dept',
-    message: 'What is the name of the Department?',
+    message: 'What is the Name of the Department?',
     type: 'input',
   },
 ];
@@ -346,12 +346,12 @@ function updateEmpRole() {
           {
             name: 'firstName',
             type: 'input',
-            message: 'What is the first name of the employee?',
+            message: 'What is the First Name of the employee?',
           },
           {
             name: 'lastName',
             type: 'input',
-            message: 'What is the last name of the employee?',
+            message: 'What is the Last Name of the employee?',
           },
           {
             name: 'updatedRole',
@@ -469,7 +469,7 @@ function delRole() {
         db.query(newQuery, delRole, function (err, res) {
           if (err) throw err;
 
-          console.log('Successfuly Deleted');
+          console.log('Successfully Deleted');
           roleSearch();
         });
       });
@@ -495,7 +495,7 @@ function delEmp() {
         db.query(newQuery, delEmp, function (err, res) {
           if (err) throw err;
 
-          console.log('Successfuly Deleted');
+          console.log('Successfully Deleted');
           empAllSearch();
         });
       });
@@ -526,7 +526,7 @@ function firstStart() {
          ██    ██  ██  ██  ██  ██ ██  ██ ██   ██ ██    ██ █▄
          ██    ██  ██  ██  ██  ██ ██  ██  █████  █████ ██  ██ CRM
 
-                                                  -Workforce not inluded!
+                                                  -Workforce not included!
 
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
   `);
