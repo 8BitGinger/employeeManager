@@ -3,6 +3,8 @@
 
 # **Workforce Manager** 🖥 _CRM_
 
+![logo](./assets/images/workforceManagerProject.jpg)
+
 ## Description
 
 Imagine a world where managing your employees is a breeze. Forget clunky spreadsheets and endless paperwork. This node.js back-end CRM is your secret weapon to streamlining your company's structure.
